@@ -75,3 +75,30 @@ Tuy nhiên, nó xảy ra nhiều vấn đề:
 - Kích thước của package cuối cùng sẽ rất lớn bởi vì nó chứa tất cả dependencies.
 
 ## 2. Run-time integration via iframes
+## 3. Run-time integration via javascript
+## 4. Run-time integration via web components
+## 5. Server-Side Composition
+- BE sẽ quyết định Micro-Frontend nào sẽ tải. 
+- Sử dụng proxy ngược đơn giản bằng Nginx để thực hiện tác vụ này. Tuy nhiên, có nhiều cách triển khai khác.
+
+Ưu điểm:
+- Tốt cho SEO.
+
+Nhược điểm:
+- Không thể thao tác như SPA.
+- Thời gian load đầu tiên lâu vì chúng ta cần đợi tất cả các mf được tạo thành.
+- Sự phức tạp trong quá trình phát triển vì cần một cấu hình server phức tạp.
+
+![image](https://user-images.githubusercontent.com/30824675/146583081-89b02f3f-f0e6-47df-88e8-65148a615990.png)
+
+## 6. Client-Side Composition
+- Container / Host có thể được build và deploy riêng biệt.
+- Mỗi Micro-Frontend có thể được hiển thị như một package riêng biệt mà Container / Host lưu trữ có thể tìm nạp Micro-Frontend cần thiết.
+
+Ưu điểm:
+- Là một tiêu chuẩn web, vì vậy nó có thể được hỗ trợ lâu dài và nhiều bản cập nhật trong tương lai.
+- Có thể chọn bất kì thư viện hay frameworks nào để phát triển.
+
+Nhược điểm:
+- Không thân thiện cho SEO.
+- Thời gian tương tác lâu vì phải load nhiều script.
