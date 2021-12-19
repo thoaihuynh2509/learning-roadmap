@@ -1,5 +1,3 @@
-# performance-roadmap
-
 How to learn performance website
 
 ![Performannce (1)](https://user-images.githubusercontent.com/30824675/129474779-18790ed5-fe4f-4755-91de-7618924f567c.png)
