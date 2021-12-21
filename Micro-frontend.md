@@ -1,18 +1,18 @@
 # I. Khái niệm cơ bản?
 ## 1. Micro frontend là gì?
-- Micro-Frontend là một phần của trang web (không phải toàn bộ trang).
-- Trong kiến trúc micro-frontend, một trange host/container có thể chứa một hoặc nhiều micro-frontend app.
-- Trang host/container cũng có thể chia sẻ một số component Micro-Frontend của riêng nó.
+- MF là một phần của trang web (không phải toàn bộ trang).
+- Trong kiến trúc MF, một trange host/container có thể chứa một hoặc nhiều MF app.
+- Trang host/container cũng có thể chia sẻ một số component MF của riêng nó.
 - Trong đó, kiến trúc gồm 3 phần chính:
-  - Micro-Frontends app.
+  - MF app.
   - Host/container
-  - Micro-Frontends framework: __Webpack 5 Module Federation Plugin__
+  - MF framework: __Webpack 5 Module Federation Plugin__
  
 ![Screenshot from 2021-12-10 22-06-11](https://user-images.githubusercontent.com/30824675/145595519-6de656ab-afa1-4d00-86e9-038895ed6d69.png)
 
 
 ## 2. Tại sao dùng Micro frontend?
-Micro-frontends được giới thiệu để giải quyết các vấn đề của SPA. Nó rất khó để mở rộng quy mô, sửa đổi hoặc thậm chí đào tạo các dev mới.
+MF được giới thiệu để giải quyết các vấn đề của SPA. Nó rất khó để mở rộng quy mô, sửa đổi hoặc thậm chí đào tạo các dev mới.
 - **Team Scalability:** Có thể chia công việc và scale hệ thống bởi nhiều team. 
 - **Single responsibility:**
   - Cho phép mỗi team sẽ build các component của riêng họ.
@@ -22,10 +22,10 @@ Micro-frontends được giới thiệu để giải quyết các vấn đề c�
 - **Reusability:** 
   - Có khả năng sử dụng code ở nhiểu nơi. 
   - Ví dụ: Một component sẽ được build và deploy => team khác có thể tái sử dụng.- **Technology agnosticism: **
-  - Kiến trúc Micro Frontends không phụ thuộc vào công nghệ. 
+  - Kiến trúc MF không phụ thuộc vào công nghệ. 
   - Bạn có thể sử dụng components từ React, Vue, Angular và không cần phải lo lắng về deploying hoặc bulding chúng.
 - **Learning Curve:** Dễ dàng hơn cho dev mới khi tìm hiểu các app nhỏ hơn thay vì hiểu monolith với cả ngàn dòng code.
-- **Domain-Driven Architecture:** Một trong những lý do chính đằng sau việc phát minh ra cả Micro-Frontends và Microservices là cho phép thực hiện **vertical domain**
+- **Domain-Driven Architecture:** Một trong những lý do chính đằng sau việc phát minh ra cả MF và Microservices là cho phép thực hiện **vertical domain**
   - **Monolith**: là một source code duy nhất (FE + BE), được quản lý bởi toàn bộ thành viên của công ty.
   - **Micro Services**: được quản lý bởi nhiều teams.
     - Giúp công ty mở rộng quy mô phát triển giữa các team và thúc đẩy việc sở hữu backend riêng.
@@ -51,7 +51,6 @@ Bất lợi  | <ul><li>Build chậm bởi vì chứa tất cả code.</li><li>T�
 # II. Các cách implement micro frontends?
 
 ![image](https://user-images.githubusercontent.com/30824675/145705336-d0438762-d995-4515-bc50-e60ff6f2728c.png)
-
 
 ## 1. Build-Time integration**
 Là việc coi các ứng dụng như một package và ứng dụng chính sẽ thêm các ứng dụng con như một thư viện như sau:
@@ -93,7 +92,7 @@ Nhược điểm:
 
 ## 6. Client-Side Composition
 - Container / Host có thể được build và deploy riêng biệt.
-- Mỗi Micro-Frontend có thể được hiển thị như một package riêng biệt mà Container / Host lưu trữ có thể tìm nạp Micro-Frontend cần thiết.
+- Mỗi MF có thể được hiển thị như một package riêng biệt mà Container/Host app lưu trữ có thể tìm nạp MF cần thiết.
 
 Ưu điểm:
 - Là một tiêu chuẩn web, vì vậy nó có thể được hỗ trợ lâu dài và nhiều bản cập nhật trong tương lai.
@@ -102,3 +101,23 @@ Nhược điểm:
 Nhược điểm:
 - Không thân thiện cho SEO.
 - Thời gian tương tác lâu vì phải load nhiều script.
+
+# III. Chi tiết về micro frontends?
+## 1. Micro frontend sẽ kết hợp Micro services như thế nào?
+- MF và MS đểu được quản lý bởi các team khác nhau và cả hai sẽ đại diện cho các business domain hoặc các services khác nhau.
+- Giống như MS sẽ kiểm soát database của chính nó, mỗi MF sẽ kiểm soát một phần của ứng dụng web của riêng nó.
+- Trong đó, **Container App (top-level)** sẽ có trách nhiệm:
+  - Định vị các MF có sẵn.
+  - Quản lý các common elements như shared header, shared footer,...
+  - Quản lý life-circle (mounted, unmounted DOM) của mỗi MF dựa trên routing event.
+  - Xử lý các công việc chung như shared data, communication, feature flags, loader component, locale, and UI theme.
+
+![image](https://user-images.githubusercontent.com/30824675/146682712-be71e4cc-10fc-4240-b5e0-31bf13941a10.png)
+
+## 2. 
+
+
+
+
+
+
