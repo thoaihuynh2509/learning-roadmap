@@ -70,6 +70,18 @@ Gồm 3 loại kĩ thuật:
 
 ![image](https://user-images.githubusercontent.com/30824675/147398992-f7eb7e60-b5c5-4a89-be65-8e0dfb607013.png)
 
+## 1.4 Shared topics
+
+Trước khi bắt đầu làm việc với Micro Frontends, để chắc chắn có kết quả tốt và tránh làm việc dư thừa thì nên áp dụng shared topics:
+- Web Performance: Mỗi page được tập hợp từ nhiều fragment bởi nhiều nhóm => phải theo dõi performance ngay từ đầu. Điều đó giúp tránh tải xuống framework hay tài nguyên dư thừa.
+- Design System: Giúp nhất quán giao diện cho người dùng => tạo common components.
+- Sharing Knowledge: Giúp bạn tập trung vào nhiệm vụ của nhóm => chọn một giải pháp để chia sẻ hoặc ít nhất là chấp nhận giải pháp từ các nhóm khác. (Tạo cơ chế quản lý lỗi)
+
+![image](https://user-images.githubusercontent.com/30824675/147435536-b831a1a8-a7f5-4f31-bc9c-7c15f7278399.png)
+
+
+
+
 
 
 
