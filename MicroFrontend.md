@@ -79,6 +79,24 @@ Trước khi bắt đầu làm việc với Micro Frontends, để chắc chắn
 
 ![image](https://user-images.githubusercontent.com/30824675/147435536-b831a1a8-a7f5-4f31-bc9c-7c15f7278399.png)
 
+# 2. Ưu điểm khi dùng Micro Frontends?
+## 2.1 Tối ưu hóa việc phát triển tính năng
+- Tình huống: Giả sử bộ phận marketing có ý tưởng tạo ra một banner mới. Đầu tiên, họ sẽ nói với team UI để thiết kế. Sau đó, team UI mới đưa cho team frontend để thảo luận. Một buổi họp sẽ được sắp xếp and đặc tả yêu cầu sẽ được viết. Mỗi team sẽ lên kế hoạch đê làm nó trong sprint tiếp theo => tốn rất nhiều thời gian giữa các team.
+- Nhưng với Micro Frontends, tất cả mọi người tham gia tạo tính năng mới chỉ ở trong 1 team. Số lượng công việc giống nhau nhưng sẽ tiết kiệm nhiều thời gian hơn:    - Có thể giao tiếp trực tiếp (ko cần meeting). 
+   - Không ảnh hưởng tới những team khác.
+
+![image](https://user-images.githubusercontent.com/30824675/147456321-a516d211-c9bf-45f6-8166-62c5d0510417.png)
+
+## 2.2 Khắc phục bất lợi Frontend Monolithic
+
+# 2. Ưu và nhược điểm?
+
+Ưu điểm  | Nhược điểm
+------------- | -------------
+Tối ưu hóa việc phát triển tính năng.  | Dư thừa code: khi có bug trong thư viện phổ biến => các team phải cùng nhau sửa.
+Khắc phục bất lợi của frontend monolithic: build, deploy độc lập. Codebase nhỏ dễ refactor. Dễ nằm được business domain.  | Ko nhất quán
+Khi muốn thay đổi công nghệ thì chỉ cần thay đổi ở 1 team nhất định để phù hợp với tính năng đó. | 
+Tính độc lập
 
 
 
