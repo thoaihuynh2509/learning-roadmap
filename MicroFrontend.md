@@ -79,7 +79,7 @@ Trước khi bắt đầu làm việc với Micro Frontends, để chắc chắn
 
 ![image](https://user-images.githubusercontent.com/30824675/147435536-b831a1a8-a7f5-4f31-bc9c-7c15f7278399.png)
 
-# 2. Ưu điểm khi dùng Micro Frontends?
+# 2. Các vấn đề khi sử dụng Micro Frontends?
 ## 2.1 Tối ưu hóa việc phát triển tính năng
 - Tình huống: Giả sử bộ phận marketing có ý tưởng tạo ra một banner mới. Đầu tiên, họ sẽ nói với team UI để thiết kế. Sau đó, team UI mới đưa cho team frontend để thảo luận. Một buổi họp sẽ được sắp xếp and đặc tả yêu cầu sẽ được viết. Mỗi team sẽ lên kế hoạch đê làm nó trong sprint tiếp theo => tốn rất nhiều thời gian giữa các team.
 - Nhưng với Micro Frontends, tất cả mọi người tham gia tạo tính năng mới chỉ ở trong 1 team. Số lượng công việc giống nhau nhưng sẽ tiết kiệm nhiều thời gian hơn:    - Có thể giao tiếp trực tiếp (ko cần meeting). 
@@ -98,18 +98,36 @@ Trước khi bắt đầu làm việc với Micro Frontends, để chắc chắn
 ## 2.4 Tính tự chủ
 Là một trong những lợi ích quan trọng của microservices và cũng như là micro frontends. Nó rất hữu ích khi các nhóm được tự quyết định những thay đổi quan trọng hơn.
 
-### 2.4.1 Tính độc lập
-Pages và Fragments là độc lập. Do đó, mỗi nhóm có thể deploy tính năng mới là một fragments mà không cần thảo luận với các nhóm khác.
+- Tính độc lập: Pages và Fragments là độc lập. Do đó, mỗi nhóm có thể deploy tính năng mới là một fragments mà không cần thảo luận với các nhóm khác.
+- Chi phí kĩ thuật thấp: (Tìm hiểu sau).
+- Hạn chế chia sẻ nhiều làm ảnh hưởng tới thời gian phát triển tính năng.
 
-# 2. Ưu và nhược điểm?
+## 2.5 Nhược điểm
 
-Ưu điểm  | Nhược điểm
-------------- | -------------
-Tối ưu hóa việc phát triển tính năng.  | Dư thừa code: khi có bug trong thư viện phổ biến => các team phải cùng nhau sửa.
-Khắc phục bất lợi của frontend monolithic: build, deploy độc lập. Codebase nhỏ dễ refactor. Dễ nằm được business domain.  | Ko nhất quán
-Khi muốn thay đổi công nghệ thì chỉ cần thay đổi ở 1 team nhất định để phù hợp với tính năng đó. | 
-Tính độc lập
+Như đã nêu trước đó, Micro Frontends giúp các nhóm tự quản mọi thứ mà họ cần. Từ đó tạo ra các tính năng có ý nghĩa cho khách hàng. Quyền tự chủ này rất mạnh mẽ nhưng gặp phải một số bất cập:
 
+## 2.5.1 Dư thừa (Redundancy)
+Trước đây, mọi người được yêu cầu phải giảm thiểu sự dư thừa trong code của mình => tăng hiệu quả và tính nhất quán.
+
+Tuy nhiên, khi làm việc với Micro Frontends, mỗi nhóm cần phải setup project, CI/CD,... Điều đó dẫn tới việc có thể trùng lập mã code giữa các team
+
+Ví dụ:
+- Khi một lỗi xuất hiện trong một thư viện phổ biến (scroll table trong antd) thì tất cả các nhóm nếu sử dụng thư viện này sẽ phải bắt buộc sửa lỗi đó giống nhau.
+- Khi một nhóm làm CI/CD nhanh hơn các nhóm khác => Nhóm này phải chia sẻ lại kiến thức cho họ. Và sau đó, các nhóm khác này sẽ phải tối ưu hóa giống như vậy.
+
+## 2.5.2 Không nhất quán (Consistency)
+Tất cả các nhóm phải có cơ sở dữ liệu của riêng họ nhưng đôi khi một nhóm cần dữ liệu mà nhóm khác sở hữu.
+
+Một giải pháp điển hình cho việc này là sao chép dữ liệu bằng cách sử dụng event bus hoặc feed system. Tuy nhiên, nó có thể gây mất thời gian cũng như dộ trễ.
+
+Ví dụ: Một sản phẩm được khuyến mại có giảm giá trên trang chủ nhưng có thể không có chiết khấu trong giỏ hàng (vì độ trễ khi sync dữ liệu giữa các team).
+
+## 2.5.3 Không đồng nhất (Heterogeneity)
+Được lựa chọn công nghệ là một trong những lợi thế quan trọng nhất mà Micro Frontends giới thiệu. Tuy nhiên, việc này khiến các nhà phát triển khó chuyển đổi từ nhóm này sang nhóm khác hoặc thậm chí trao đổi các phương pháp hay nhất.
+
+Mặc dù vậy, không nhất thiết sử dụng khác công nghệ vì lợi ích cốt lõi của việc nâng cấp phiên bản tự động và ít chi phí giao tiếp hơn vẫn còn.
+
+# 3. Khi nào nên dùng Micro Frontends?
 
 
 
