@@ -88,6 +88,18 @@ Trước khi bắt đầu làm việc với Micro Frontends, để chắc chắn
 ![image](https://user-images.githubusercontent.com/30824675/147456321-a516d211-c9bf-45f6-8166-62c5d0510417.png)
 
 ## 2.2 Khắc phục bất lợi Frontend Monolithic
+- Build và deploy độc lập.
+- Dễ dàng refactor, tìm kiếm bug vì codebase nhỏ.
+- Dễ dàng hiểu rõ business domain vì mỗi team chỉ nắm một vài business domain nhất định
+
+## 2.3 Không làm ảnh hưởng đến code cũ
+![image](https://user-images.githubusercontent.com/30824675/147488645-229444ac-ca95-4654-b8a1-d1bd0995f48a.png)
+
+## 2.4 Tính tự chủ
+Là một trong những lợi ích quan trọng của microservices và cũng như là micro frontends. Nó rất hữu ích khi các nhóm được tự quyết định những thay đổi quan trọng hơn.
+
+### 2.4.1 Tính độc lập
+Pages và Fragments là độc lập. Do đó, mỗi nhóm có thể deploy tính năng mới là một fragments mà không cần thảo luận với các nhóm khác.
 
 # 2. Ưu và nhược điểm?
 
