@@ -106,7 +106,7 @@ Là một trong những lợi ích quan trọng của microservices và cũng nh
 
 Như đã nêu trước đó, Micro Frontends giúp các nhóm tự quản mọi thứ mà họ cần. Từ đó tạo ra các tính năng có ý nghĩa cho khách hàng. Quyền tự chủ này rất mạnh mẽ nhưng gặp phải một số bất cập:
 
-## 2.5.1 Dư thừa (Redundancy)
+### 2.5.1 Dư thừa (Redundancy)
 Trước đây, mọi người được yêu cầu phải giảm thiểu sự dư thừa trong code của mình => tăng hiệu quả và tính nhất quán.
 
 Tuy nhiên, khi làm việc với Micro Frontends, mỗi nhóm cần phải setup project, CI/CD,... Điều đó dẫn tới việc có thể trùng lập mã code giữa các team
@@ -115,21 +115,30 @@ Ví dụ:
 - Khi một lỗi xuất hiện trong một thư viện phổ biến (scroll table trong antd) thì tất cả các nhóm nếu sử dụng thư viện này sẽ phải bắt buộc sửa lỗi đó giống nhau.
 - Khi một nhóm làm CI/CD nhanh hơn các nhóm khác => Nhóm này phải chia sẻ lại kiến thức cho họ. Và sau đó, các nhóm khác này sẽ phải tối ưu hóa giống như vậy.
 
-## 2.5.2 Không nhất quán (Consistency)
+### 2.5.2 Không nhất quán (Consistency)
 Tất cả các nhóm phải có cơ sở dữ liệu của riêng họ nhưng đôi khi một nhóm cần dữ liệu mà nhóm khác sở hữu.
 
 Một giải pháp điển hình cho việc này là sao chép dữ liệu bằng cách sử dụng event bus hoặc feed system. Tuy nhiên, nó có thể gây mất thời gian cũng như dộ trễ.
 
 Ví dụ: Một sản phẩm được khuyến mại có giảm giá trên trang chủ nhưng có thể không có chiết khấu trong giỏ hàng (vì độ trễ khi sync dữ liệu giữa các team).
 
-## 2.5.3 Không đồng nhất (Heterogeneity)
+### 2.5.3 Không đồng nhất (Heterogeneity)
 Được lựa chọn công nghệ là một trong những lợi thế quan trọng nhất mà Micro Frontends giới thiệu. Tuy nhiên, việc này khiến các nhà phát triển khó chuyển đổi từ nhóm này sang nhóm khác hoặc thậm chí trao đổi các phương pháp hay nhất.
 
 Mặc dù vậy, không nhất thiết sử dụng khác công nghệ vì lợi ích cốt lõi của việc nâng cấp phiên bản tự động và ít chi phí giao tiếp hơn vẫn còn.
 
-# 3. Khi nào nên dùng Micro Frontends?
+# 3. Khi nào nên và không nên dùng Micro Frontends?
+## 3.1 Nên dùng
+- Team size từ vừa đến lớn: Recommend mỗi team từ 5-10 thành viên.
+- Tốt hơn khi xây dựng trên Web
+- Quan trọng năng suất hơn là sự phức tạp trong setup hay chi phí vận hành.
 
-
-
+## 3.2 Không nên dùng
+- Có ít nhà phát triển và việc giao tiếp không thành vấn đề.
+- Có business domain có khả năng chia theo vertial system vì nếu nhiệm vụ nhóm không rõ ràng hoặc chồng chéo sẽ dẫn đến sự không chắc chắn và các cuộc thảo luận kéo dài.
+- Trong môi trường start-up: 
+  - Mọi thứ đều hoạt động tốt cho đến thời điểm mà công ty cần để thay đổi mô hình kinh doanh của mình. 
+  - Giải pháp: có thể tổ chức lại các nhóm và phần mềm liên quan, nhưng nó tạo ra nhiều xung đột và công việc bổ sung.
+- Cần tạo nhiều ứng dụng và giao diện người dùng gốc khác nhau để chạy trên mọi thiết bị.
 
 
