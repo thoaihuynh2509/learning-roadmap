@@ -141,4 +141,40 @@ Mặc dù vậy, không nhất thiết sử dụng khác công nghệ vì lợi 
   - Giải pháp: có thể tổ chức lại các nhóm và phần mềm liên quan, nhưng nó tạo ra nhiều xung đột và công việc bổ sung.
 - Cần tạo nhiều ứng dụng và giao diện người dùng gốc khác nhau để chạy trên mọi thiết bị.
 
+# 4. Chuyển trang bởi links
+![image](https://user-images.githubusercontent.com/30824675/147804284-f556faa1-1bcc-4641-9236-fd2957d75c28.png)
+
+## 4.1 Ưu điểm
+- Sự kết nối giữa các ứng dụng thấp:
+  - Nhóm chỉ cần triển khai mẫu URL của nhóm khác để liên kết với họ.
+  - Nhóm không phải quan tâm đến ngôn ngữ lập trình, frameworks, styling, deployment hay cách hoisting nhóm khác sử dụng.
+- Độ bền cao: 
+  - Khi một ứng dụng gặp sự cố sẽ không ảnh hưởng đến page hiện tại và không ảnh hưởng đến hệ thống của nhóm khác.
+
+## 4.2 Nhược điểm
+Không tối ưu theo quan điểm người dùng vì không có cách nào kết hợp dữ liệu từ hai nhóm khác nhau vào một chế độ xem
+
+## 4.3 Khi nào sử dụng?
+Khi bạn đang xây dựng một trang web hơi phức tạp, việc tích hợp chỉ dựa vào các liên kết là không đủ trong hầu hết các trường hợp.
+
+Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào các kĩ thuật tích hợp khác.
+
+# 5. Composition via iframe
+![image](https://user-images.githubusercontent.com/30824675/147817139-28b5d097-0d34-4dfa-bfa2-5cb63f5376f3.png)
+
+## 5.1 Ưu điểm
+- Dễ để thực hiện.
+- Cô lập hoàn toàn giữa các micro frontends. (HTML riêng biệt, CSS, JS, hình ảnh,…)
+- Hoạt động tốt trên tất cả các trình duyệt.
+- Mang một số tính năng bảo mật tự vệ cho từng micro frontends.
+
+## 5.2 Nhược điểm
+- Không thể đặt tự động chiều cao của Iframe (nhược điểm lớn nhất).
+- Giảm hiệu suất vì mỗi iframe đều tạo ra một context browser mới => tăng bộ nhớ và CPU.
+- Không tốt cho khả năng tiếp cận (cho người khuyết tật) và cho SEO.
+
+## 5.3 Khi nào sử dụng
+- Ứng dụng có bố cục tổng thể là tĩnh (static) và không cần SEO.
+- ứng dụng nội bộ của công ty vì nó dễ dàng để bắt đầu với kĩ thuật Micro Frontends.
+
 
