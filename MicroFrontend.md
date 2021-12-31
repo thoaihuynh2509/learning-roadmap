@@ -174,7 +174,7 @@ Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào c
 - Không tốt cho khả năng tiếp cận (cho người khuyết tật) và cho SEO.
 
 ## 5.3 Khi nào sử dụng
-- Ứng dụng có bố cục tổng thể là tĩnh (static) và không cần SEO.
+- Biết được kích thước của nội dung trong iframe (tĩnh) và không cần SEO.
 - ứng dụng nội bộ của công ty vì nó dễ dàng để bắt đầu với kĩ thuật Micro Frontends.
 
 
