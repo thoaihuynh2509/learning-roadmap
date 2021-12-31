@@ -160,7 +160,7 @@ Khi bạn đang xây dựng một trang web hơi phức tạp, việc tích hợ
 Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào các kĩ thuật tích hợp khác.
 
 # 5. Composition via iframe
-![image](https://user-images.githubusercontent.com/30824675/147817139-28b5d097-0d34-4dfa-bfa2-5cb63f5376f3.png)
+![Screenshot from 2021-12-31 17-38-24](https://user-images.githubusercontent.com/30824675/147818782-d275114e-64e1-4bab-8ffa-898e249fdb09.png)
 
 ## 5.1 Ưu điểm
 - Dễ để thực hiện.
