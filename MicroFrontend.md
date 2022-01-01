@@ -178,16 +178,21 @@ Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào c
 - Ứng dụng nội bộ của công ty vì nó dễ dàng để bắt đầu với kĩ thuật Micro Frontends.
 
 # 6. Composition via Ajax
+![Screenshot from 2022-01-02 00-15-59](https://user-images.githubusercontent.com/30824675/147856177-cb7a77c2-41b0-4bf4-a262-d0aa779b0d61.png)
+
 Bạn có thể tích hợp nội dung của nhiều pages vào một <document /> thông qua việc tải bởi Ajax. So sánh với Iframe thì tích hợp bởi Ajax sẽ tốt hơn cho khả năng tiếp cận (cho người khuyết tật), SEO hay hiệu suất.
 
 Tuy nhiên, vì nó đặt các fragments vào trong cùng <document /> nên có khả năng xảy ra xung đột CSS. Để giải quyết vấn đề này, ta có thể sử dụng prefix cho classname của CSS.
+
+![Screenshot from 2022-01-02 00-17-47](https://user-images.githubusercontent.com/30824675/147856207-b072ecff-f6b2-418e-9d6d-83a79fcfcb5e.png)
 
 ## 6.1 Ưu điểm
 - Dễ dàng triển khai.
 - Giống như web bình thường: chiều cao của các fragment được tự động điều chỉnh.
 - Tốt cho SEO, accessibility.
 - Dễ dàng cung cấp một dự phòng đáng tin cậy trong trường hợp JavaScript bị lỗi hoặc chưa được thực thi.
-``` <h-include src="">
+``` 
+    <h-include src="">
       <button>Show detail</button>
     </h-include>
 ```
