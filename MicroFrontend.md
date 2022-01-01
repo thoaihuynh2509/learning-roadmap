@@ -175,6 +175,37 @@ Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào c
 
 ## 5.3 Khi nào sử dụng
 - Biết được kích thước của nội dung trong iframe (tĩnh) và không cần SEO.
-- ứng dụng nội bộ của công ty vì nó dễ dàng để bắt đầu với kĩ thuật Micro Frontends.
+- Ứng dụng nội bộ của công ty vì nó dễ dàng để bắt đầu với kĩ thuật Micro Frontends.
+
+# 6. Composition via Ajax
+Bạn có thể tích hợp nội dung của nhiều pages vào một <document /> thông qua việc tải bởi Ajax. So sánh với Iframe thì tích hợp bởi Ajax sẽ tốt hơn cho khả năng tiếp cận (cho người khuyết tật), SEO hay hiệu suất.
+
+Tuy nhiên, vì nó đặt các fragments vào trong cùng <document /> nên có khả năng xảy ra xung đột CSS. Để giải quyết vấn đề này, ta có thể sử dụng prefix cho classname của CSS.
+
+## 6.1 Ưu điểm
+- Dễ dàng triển khai.
+- Giống như web bình thường: chiều cao của các fragment được tự động điều chỉnh.
+- Tốt cho SEO, accessibility.
+- Dễ dàng cung cấp một dự phòng đáng tin cậy trong trường hợp JavaScript bị lỗi hoặc chưa được thực thi.
+``` <h-include src="">
+      <button>Show detail</button>
+    </h-include>
+```
+- Linh hoạt trong việc xử lý lỗi với **new Promise().catch()**
+
+## 6.2 Nhược điểm
+- Asynchronous loading
+  - Có thể nhận thấy rằng trang web nhảy hoặc lắc lư một chút khi tải do tải không đồng bộ.
+  - Tải nội dung không đồng bộ luôn đi kèm với sự đánh đổi là nội dung xuất hiện với độ trễ (Ngoại trừ các fragments nằm sâu hơn bên dưới trang và bên ngoài chế độ xem).
+- Không cô lập: Xung đột CSS
+- Khó khăn khi tương tác với các phần tử thông qua JS
+  - Khi trang bên ngoài cập nhật một fragment bằng cách thay thế nó bằng đánh dấu mới fragment (được tìm nạp từ máy chủ), 
+  - Sau đó, trình xử lý sự kiện này cần được xóa và thêm lại vào fragment mới này.
+
+## 6.3 Khi nào sử dụng?
+- Muốn ứng dụng các lợi ích của server-side render.
+- Các Fragment **không** chứa nhiều tương tác và **không có** trạng thái cục bộ. Nguyên nhân là việc tải và tải lại sẽ gây ra cảm giác chậm trễ do độ trễ của mạng
+
+
 
 
