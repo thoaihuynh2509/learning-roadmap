@@ -184,7 +184,7 @@ Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào c
 - Biết được kích thước của nội dung trong iframe (tĩnh) và không cần SEO.
 - Ứng dụng nội bộ của công ty vì nó dễ dàng để bắt đầu với kĩ thuật Micro Frontends.
 
-# 6. Composition via Ajax
+# 6. Composition via Ajax và server-side routing
 ![Screenshot from 2022-01-02 00-15-59](https://user-images.githubusercontent.com/30824675/147856177-cb7a77c2-41b0-4bf4-a262-d0aa779b0d61.png)
 
 Bạn có thể tích hợp nội dung của nhiều pages vào một <document /> thông qua việc tải bởi Ajax. So sánh với Iframe thì tích hợp bởi Ajax sẽ tốt hơn cho khả năng tiếp cận (cho người khuyết tật), SEO hay hiệu suất.
@@ -192,6 +192,7 @@ Bạn có thể tích hợp nội dung của nhiều pages vào một <document 
 Tuy nhiên, vì nó đặt các fragments vào trong cùng <document /> nên có khả năng xảy ra xung đột CSS. Để giải quyết vấn đề này, ta có thể sử dụng prefix cho classname của CSS.
 
 Ví dụ:
+
 Trong /team-decide/static/page.js
 
 ```
@@ -243,6 +244,28 @@ Trong /team-decide/view.js
 ## 6.3 Khi nào sử dụng?
 - Muốn ứng dụng các lợi ích của server-side render.
 - Các Fragment **không** chứa nhiều tương tác và **không có** trạng thái cục bộ. Nguyên nhân là việc tải và tải lại sẽ gây ra cảm giác chậm trễ do độ trễ của mạng
+
+# 6.4. Server-side routing via Nginx
+
+
+Tình huống: Khách hàng mong đợi rằng domain trong thanh địa chỉ trình duyệt sẽ không thay đổi sau mỗi lần thao tác sự kiện. 
+![Screenshot from 2022-01-02 16-51-15](https://user-images.githubusercontent.com/30824675/147872259-69fddabf-b5fb-46d9-880a-718ad18ec01f.png)
+
+Giải pháp: 
+- Bạn có thể định tuyến nội dung của nhiều ứng dụng thông qua một frontend proxy (Nginx).
+- Proxy này cung cấp tất cả nội dung thông qua một domain thống nhất. 
+- Ngoài ra, kết hợp với việc sử dụng prefix (tên nhóm) trong đường dẫn URL là một cách tuyệt vời để giúp gỡ lỗi và định tuyến dễ dàng hơn.
+
+Ưu điểm:
+- Tránh CORS
+- Cho phép chia sẻ dữ liệu (Vd: login by cookie)
+- Hiệu suất tốt hơn (chỉ một lần tra cứu DNS, SSL handshake, …)
+
+Ai là người quản lý:
+- Về mặt truyền thống thì team platform.
+- Tuy nhiên, việc này sẽ xảy ra một vấn đề là khi máy chủ web không hoạt động, khách hàng không nhìn thấy gì, ngay cả khi các ứng dụng đằng sau nó vẫn đang chạy.
+
+![Screenshot from 2022-01-02 16-15-33](https://user-images.githubusercontent.com/30824675/147871459-fba7dcf0-d75f-49d7-9822-cf3f92af67f1.png)
 
 
 
