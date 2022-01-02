@@ -162,6 +162,13 @@ Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào c
 # 5. Composition via iframe
 ![Screenshot from 2021-12-31 17-38-24](https://user-images.githubusercontent.com/30824675/147818782-d275114e-64e1-4bab-8ffa-898e249fdb09.png)
 
+```
+<div id="app-shell">
+  <iframe src="https://squad-fragment.com/header"></iframe>
+  <iframe src="https://squad-inside.com"></iframe>  
+</div>
+```
+
 ## 5.1 Ưu điểm
 - Dễ để thực hiện.
 - Cô lập hoàn toàn giữa các micro frontends. (HTML riêng biệt, CSS, JS, hình ảnh,…)
@@ -183,6 +190,32 @@ Thường thì bạn cần nhúng thông tin từ một nhóm khác nhờ vào c
 Bạn có thể tích hợp nội dung của nhiều pages vào một <document /> thông qua việc tải bởi Ajax. So sánh với Iframe thì tích hợp bởi Ajax sẽ tốt hơn cho khả năng tiếp cận (cho người khuyết tật), SEO hay hiệu suất.
 
 Tuy nhiên, vì nó đặt các fragments vào trong cùng <document /> nên có khả năng xảy ra xung đột CSS. Để giải quyết vấn đề này, ta có thể sử dụng prefix cho classname của CSS.
+
+Ví dụ:
+Trong /team-decide/static/page.js
+
+```
+const element = document.querySelector(".decide_recos");
+const url = element.getAttribute("data-fragment");
+
+window.fetch(url)
+  .then((res) => res.text())
+  .then(html => element.innerHTML = html);
+
+```
+
+Trong /team-decide/view.js
+```
+<body>
+  <aside
+    class="decide_recos"
+    data-fragment="http://localhost:3002/fragment/recommendations/porsche"
+  >
+    <a href="http://localhost:3002/recommendations/porsche">Show Recommendations</a>
+  </aside>  
+  <script src="/static/page.js" async></script>
+</body>  
+```
 
 ![Screenshot from 2022-01-02 00-17-47](https://user-images.githubusercontent.com/30824675/147856207-b072ecff-f6b2-418e-9d6d-83a79fcfcb5e.png)
 
